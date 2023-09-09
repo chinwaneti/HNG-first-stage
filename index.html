@@ -136,15 +136,19 @@
             dayOfWeekElement.textContent = `Day: ${currentDay}`;
 
             const utcTimeElement = document.querySelector('[data-testid="currentUTCTime"]');
-            const currentTimeMillis = new Date().getTime();
-            utcTimeElement.textContent = `Current UTC Time (Milliseconds): ${currentTimeMillis}`;
+            const hours = currentDate.getUTCHours();
+            const minutes = currentDate.getUTCMinutes();
+            const seconds = currentDate.getUTCSeconds();
+            const milliseconds = currentDate.getUTCMilliseconds();
+            utcTimeElement.textContent = `Current UTC Time: ${hours}:${minutes}:${seconds}.${milliseconds}`;
         }
 
         document.addEventListener("DOMContentLoaded", function () {
             updateDateTime();
-            setInterval(updateDateTime, 1000);
+            setInterval(updateDateTime, 1); // Update every millisecond
         });
     </script>
+
 
 </body>
 </html>
